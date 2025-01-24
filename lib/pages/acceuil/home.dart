@@ -1,5 +1,3 @@
-import 'package:amimobile7/pages/acceuil/info_home.dart';
-import 'package:amimobile7/pages/suivi.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,33 +18,20 @@ class Homes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFA0D995), // Vert menthe clair
+      backgroundColor: Colors.green, // Couleur de fond principale
       appBar: AppBar(
         title: Text("bienvenu", style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFFA0D995), // Vert menthe clair
+        backgroundColor: Colors.green,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: Container(), // Désactive le bouton retour
         actions: [
           IconButton(
             icon: Icon(Icons.notifications, color: Colors.white),
-            onPressed: () { Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => infoPage()),
-              );},
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.person, color: Colors.white),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TrackingPage()),
-              );
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -68,36 +53,28 @@ class Homes extends StatelessWidget {
             ),
             // Boutons colorés
             coloredMenuItem(
-              color: Color(0xFF4A90E2), // Bleu clair
+              color: Colors.blue,
               icon: Icons.bookmark,
               label: "Redaction de docs",
-              onTap: () {
-                // Action au clic
-              },
+              onTap: () {},
             ),
             coloredMenuItem(
-              color: Color(0xFF6E6E6E), // Gris anthracite
+              color: Colors.brown,
               icon: Icons.gavel,
               label: "Conseil juridique",
-              onTap: () {
-                // Action au clic
-              },
+              onTap: () {},
             ),
             coloredMenuItem(
-              color: Color(0xFFFFB347), // Orange doux
+              color: Colors.yellow,
               icon: Icons.handshake,
               label: "Negociation",
-              onTap: () {
-                // Action au clic
-              },
+              onTap: () {},
             ),
             coloredMenuItem(
-              color: Color(0xFFE57373), // Rose framboise clair
+              color: Colors.purple,
               icon: Icons.article,
               label: "Contentieux",
-              onTap: () {
-                // Action au clic
-              },
+              onTap: () {},
             ),
             // Domaine d'intervention
             Padding(
@@ -143,6 +120,31 @@ class Homes extends StatelessWidget {
                 ],
               ),
             ),
+            // Informations de contact
+            Divider(color: Colors.white, thickness: 1),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "Contactez-nous",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            contactInfo(
+              icon: Icons.location_on,
+              label: "Adresse : 123 Rue du Droit, Dakar, Sénégal",
+            ),
+            contactInfo(
+              icon: Icons.phone,
+              label: "Téléphone : +221 33 123 45 67",
+            ),
+            contactInfo(
+              icon: Icons.email,
+              label: "E-mail : contact@cabinetziza.sn",
+            ),
           ],
         ),
       ),
@@ -181,6 +183,24 @@ class Homes extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
+    );
+  }
+
+  Widget contactInfo({required IconData icon, required String label}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.white, size: 30),
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

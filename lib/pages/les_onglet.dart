@@ -29,8 +29,7 @@ class _HomePageState extends State<HoPage> {
     ConsultationFormPage(),
     avocattList(),
     ParametresPage(),
-    TrackingPage
-    
+    large
     (),
   ];
 
